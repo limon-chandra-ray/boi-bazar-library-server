@@ -42,13 +42,23 @@ async function run() {
     const borrowCollection = client.db('booksInventory').collection('borrow');
     const donateCollection =  client.db('booksInventory').collection('donate');
     const usersCollection= client.db("booksInventory").collection("users");
-////insert a book post 
+//insert a book post 
  app.post('/api/upload-book',async(req,res)=>{
 
   const data=req.body;
 
   //
   const result=await donateCollection.insertOne(data);
+  console.log(result)
+  res.send(result);
+ })
+ //insert a book post 
+ app.post('/api/add-book',async(req,res)=>{
+
+  const data=req.body;
+
+  //
+  const result=await booksCollection.insertOne(data);
   console.log(result)
   res.send(result);
  })
@@ -96,7 +106,6 @@ app.get('/api/all-books',async(req,res)=>{
   query={category: req.query.category}
  }
  const result= await booksCollection.find(query).toArray();
-
 
   res.send(result);
  })
