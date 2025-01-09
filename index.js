@@ -49,7 +49,6 @@ async function run() {
 
   //
   const result=await donateCollection.insertOne(data);
-  console.log(result)
   res.send(result);
  })
  //insert a book post 
@@ -59,7 +58,6 @@ async function run() {
 
   //
   const result=await booksCollection.insertOne(data);
-  console.log(result)
   res.send(result);
  })
 
@@ -86,7 +84,7 @@ res.send(result);
 
  ///MOREdetail a book
 
- app.get("/api/moredetail/:id", async (req, res) => {
+ app.get("/api/more-detail/:id", async (req, res) => {
   const id=req.params.id;
  const query={
   _id : new ObjectId(id)
